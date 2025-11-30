@@ -1,6 +1,5 @@
 import BooksFactory from "../models/BooksFactory.js";
 
-
 class BooksService {
     constructor() {
         this.model = BooksFactory.get(process.env.PERSISTENCE);
@@ -34,6 +33,36 @@ class BooksService {
     deleteBooks = async (identifier) => {
         const removedBook = await this.model.deleteBooks(identifier);
         return removedBook
+    };
+
+    patchLendBooks = async (identifier) => {
+        const updatedBook = await this.model.patchLendBooks(identifier);
+        return updatedBook
+    };
+
+    patchReturnBooks = async (identifier) => {
+        const updatedBook = await this.model.patchReturnBooks(identifier);
+        return updatedBook
+    };
+
+    patchUnfitBooks = async (identifier) => {
+        const updatedBook = await this.model.patchUnfitBooks(identifier);
+        return updatedBook
+    };
+
+    patchFitBooks = async (identifier) => {
+        const updatedBook = await this.model.patchFitBooks(identifier);
+        return updatedBook
+    };
+
+    getBooksByStatus = async () => {
+        const booksByStatus = await this.model.getBooksByStatus();
+        return booksByStatus
+    };
+    
+    patchLendBooksWithPrize = async (identifier) => {
+        const result = await this.model.patchLendBooksWithPrize(identifier);
+        return result
     };
 }
 
